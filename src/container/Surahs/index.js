@@ -1,21 +1,3 @@
-// import { Component } from 'react';
-// import { Text, View } from 'react-native';
-
-// export default class Chaters extends Component {
-//   static navigationOptions = {
-//     title: ({ state }) => `${state.params.name}`
-//   };
-//   render() {
-//     const data = this.props.navigation.state.params.data;
-//     return (
-//       <View>
-//         <Text>{JSON.stringify(data)} </Text>
-//       </View>
-//     );
-//   }
-// }
-
-
 import { Component, PropTypes } from 'react';
 import {
   TextInput,
@@ -31,7 +13,7 @@ import { baseHeaderStyle } from '../../styles/variables';
 
 // components
 import AudioPlayer from '../../components/AudioPlayer';
-import ChapterList from '../../components/ChapterList';
+import SurahList from '../../components/SurahList';
 import Loader from '../../components/common/Loader';
 
 import { Container, Item } from 'native-base';
@@ -39,9 +21,9 @@ import Icon from 'react-native-vector-icons/EvilIcons';
 
 
 
-export class Chapters extends Component {
+export class Surahs extends Component {
   static navigationOptions = {
-    title: 'Chapters list',
+    title: 'Surahs list',
     header: ({ state, setParams }, defaultHeader) => ({
       ...defaultHeader,
       ...baseHeaderStyle
@@ -53,14 +35,13 @@ export class Chapters extends Component {
   };
 
   componentDidMount() {
-    console.log("chapters did mount");
-    this.props.actions.getChapters();
+    this.props.actions.getSurahs();
   }
 
   render() {
-    const { navigation, chapters, actions, search } = this.props;
+    const { navigation, surahs, actions, search } = this.props;
     const { navigate } = navigation;
-    if (chapters.length < 1) return <Loader />;
+    if (surahs.length < 1) return <Loader />;
 
     return (
       <Container>
@@ -80,21 +61,21 @@ export class Chapters extends Component {
           />
         </Item>
         <View />
-        <ChapterList chapters={chapters} actions={{ navigate }} search={search} />
+        <SurahList surahs={surahs} actions={{ navigate }} search={search} />
         <AudioPlayer />
       </Container>
     );
   }
 }
 
-Chapters.propTypes = {
+Surahs.propTypes = {
   actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
-  console.log(state);
+  
   return {
-    chapters: state.chapters.chapters,
+    surahs: state.surahs.surahs,
     main: state.main,
     search: state.search
   };
@@ -132,4 +113,4 @@ const style = StyleSheet.create({
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Chapters);
+export default connect(mapStateToProps, mapDispatchToProps)(Surahs);

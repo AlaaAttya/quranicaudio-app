@@ -1,21 +1,3 @@
-// import { Component } from 'react';
-// import { Text, View } from 'react-native';
-
-// export default class Chaters extends Component {
-//   static navigationOptions = {
-//     title: ({ state }) => `${state.params.name}`
-//   };
-//   render() {
-//     const data = this.props.navigation.state.params.data;
-//     return (
-//       <View>
-//         <Text>{JSON.stringify(data)} </Text>
-//       </View>
-//     );
-//   }
-// }
-
-
 import { Component, PropTypes } from 'react';
 import {
   TextInput,
@@ -53,7 +35,6 @@ export class Chapters extends Component {
   };
 
   componentDidMount() {
-    console.log("chapters did mount");
     this.props.actions.getChapters();
   }
 
@@ -92,7 +73,6 @@ Chapters.propTypes = {
 };
 
 function mapStateToProps(state) {
-  console.log(state);
   return {
     chapters: state.chapters.chapters,
     main: state.main,

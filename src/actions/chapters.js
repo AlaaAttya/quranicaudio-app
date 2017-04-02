@@ -10,6 +10,6 @@ export const getChapters = () => {
 
   return dispatch => fetch(url)
     .then(response => response.json())
-    .then(data => {console.log("yes");dispatch(chapters(data))})
+    .then(data => dispatch(chapters(data)))
     .catch(error => console.warn(error));
 };

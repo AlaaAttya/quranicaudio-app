@@ -8,7 +8,7 @@ export default ({ surahs, actions }) => {
     sortedSurahs.map(({ letter, surahs }) => [
       <ListItem itemDivider><Text>{letter}</Text></ListItem>,
       surahs.map(surah =>
-        <ListItem onPress={() => actions.navigate('Surah', { name: surah.name.simple, data: surah })}>
+        <ListItem onPress={() => actions.navigate('AudioPlayer', { name: surah.name.simple, data: surah })}>
           <Text>{surah.name.simple}</Text>
         </ListItem>)
     ]

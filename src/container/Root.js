@@ -5,11 +5,13 @@ import { StackNavigator, addNavigationHelpers } from 'react-navigation';
 import HomeContainer from './Home';
 import Chapters from './Chapters';
 import Surahs from './Surahs';
+import AudioPlayer from './AudioPlayer';
 
 export const AppNavigator = StackNavigator({
   Home: { screen: HomeContainer },
   Chapters: { screen: Chapters },
-  Surahs: {screen: Surahs}
+  Surahs: {screen: Surahs},
+  AudioPlayer: {screen: AudioPlayer}
 });
 
 const AppWithNavigationState = ({ dispatch, navigation }) => (<AppNavigator
